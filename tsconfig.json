@@ -1,0 +1,13 @@
+{
+    //Configurações de compilação
+    "compilerOptions": {
+        "outDir": "dist/js", //compilar o TS para JS no diretório dist
+        "target": "ES6", //Qual versão do ECMAScript será convertida do TS
+        "noEmitOnError": true, //Não irá gerar um arquivo .js caso tenho erros de compilação no .ts 
+        "noImplicitAny": true //Não irá adotar o tipo any implicitamente, sendo necessário tipar variaveis
+    },
+    //Origem dos arquivos TS
+    "include": [
+        "app/**/*" //Toda subpasta e qualquer arquivo
+    ]
+}
