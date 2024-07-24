@@ -1,12 +1,15 @@
-import { NegociacaoModel } from "../models/negociacao-model.js";
-import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacaoModel } from '../models/negociacao-model.js';
+import { NegociacoesLista } from '../models/negociacoes-lista.js';
+import { NegociacoesView } from '../views/negociacoes-view.js';
 export class NegociacaoController {
     //Quem instanciar a classe NegociacaoController irá buscar automaticamente os elementos input no HTML
     constructor() {
-        this.negociacoes = new Negociacoes;
+        this.negociacoes = new NegociacoesLista();
+        this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
         this.inputValor = document.querySelector('#valor');
+        this.negociacoesView.update(this.negociacoes);
     }
     criarNegociacao() {
         const exp = /-/g; //Expressão regular para encontrar "-" e que sejam todos "g": global
@@ -18,9 +21,8 @@ export class NegociacaoController {
     adicionar() {
         const negociacao = this.criarNegociacao();
         this.negociacoes.adicionar(negociacao);
-        this.negociacoes.listar();
+        this.negociacoesView.update(this.negociacoes);
         this.limparFormulario();
-        console.log(this.negociacoes.listar());
     }
     limparFormulario() {
         this.inputData.value = '';

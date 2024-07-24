@@ -1,6 +1,6 @@
 import { NegociacaoModel } from "./negociacao-model";
 
-export class Negociacoes{
+export class NegociacoesLista {
 
     private negociacoes: Array<NegociacaoModel> = [];
 
